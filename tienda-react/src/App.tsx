@@ -2,6 +2,7 @@ import Footer from "./components/Footer"
 import Header from "./components/Header"
 import ProductCard from "./components/ProductCard"
 import { productos } from "./datos"
+import Beneficio from "./components/Beneficio"
 
 
 
@@ -17,6 +18,12 @@ export default function App() {
           productos.map((p) => <ProductCard producto={p} key={p.id}/>)
         }
       </section>
+      {/* Proyecto Final: sección de beneficios reutilizando componentes y props*/}
+      <section className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+        <Beneficio titulo="Envíos" detalle="Entregamos tus productos a domicilio"/>
+        <Beneficio titulo="Cuotas" detalle="Opciones de pago para tus compras"/>
+        <Beneficio titulo="Garantía" />
+        </section>
       <Footer/>
     </main>
   )
