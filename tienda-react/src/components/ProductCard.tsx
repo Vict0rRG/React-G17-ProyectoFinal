@@ -6,15 +6,16 @@ interface Props {
 }
 
 export default function ProductCard({ producto } : Props) {
+  // Proyecto Final: cambie w-64 por w-full para adaptar la tarjeta al Grid
   return (
-    <article className="w-64 rounded-xl border p-4">
+    <article className="w-full rounded-xl border p-4">
         <img src={producto.imagen} alt={producto.nombre} className="mb-3 aspect-square object-contain" />
         <p className="text-sm text-gray-500">{producto.marca}</p>
         <h2 className="font-semibold">{producto.nombre}</h2>
         <p className="text-sm">{
             producto.stock === 0 ? 'Agotado' : `${producto.stock} disponibles`
         }</p>
-        <p className="text-sx text-gray-500">{(producto.precio * 1.18).toFixed(2)} con IGV</p>
+        <p className="text-xs text-gray-500">{(producto.precio * 1.18).toFixed(2)} con IGV</p>
         <p className="mt-2">{formatearPrecio(producto.precio)}</p>
     </article>
   )

@@ -11,7 +11,8 @@ export default function App() {
       <Header nombre="TecCart" eslogan="Una Vida Tecnologica"/>
       <Header nombre="FalabellaProductos"/>
       {/* PROPS */}
-      <section>
+      {/* Proyecto Final: distribución responsive con CSS Grid - Agregue un atributo className a la etiqueta <section> */}
+      <section className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {
           productos.map((p) => <ProductCard producto={p} key={p.id}/>)
         }
