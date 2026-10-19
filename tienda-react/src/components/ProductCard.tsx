@@ -1,5 +1,6 @@
-import formatearPrecio from "../formato";
+//import formatearPrecio from "../formato";
 import type { Producto } from "../tipos";
+import Precio from "./Precio";
 
 interface Props {
   producto : Producto;
@@ -15,8 +16,8 @@ export default function ProductCard({ producto } : Props) {
         <p className="text-sm">{
             producto.stock === 0 ? 'Agotado' : `${producto.stock} disponibles`
         }</p>
-        <p className="text-xs text-gray-500">{(producto.precio * 1.18).toFixed(2)} con IGV</p>
-        <p className="mt-2">{formatearPrecio(producto.precio)}</p>
+        {/* Proyecto Final: reutilizamos el componente Precio mediante props */}
+        <Precio precio={producto.precio} />
     </article>
   )
 }
