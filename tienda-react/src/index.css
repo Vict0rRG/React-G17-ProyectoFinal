@@ -1,1 +1,20 @@
 @import 'tailwindcss';
+
+/* Proyecto Final: Personalizacion de colores con CSS */
+:root {
+  --color-fondo-tarjeta: #eff6ff;
+  --color-borde-tarjeta: #bfdbfe;
+  --color-acento: #2563eb;
+}
+
+/* Proyecto Final: estilos y efecto hover de las tarjetas */
+.tarjeta-producto {
+  background-color: var(--color-fondo-tarjeta);
+  border-color: var(--color-borde-tarjeta);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.tarjeta-producto:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-acento);
+}
