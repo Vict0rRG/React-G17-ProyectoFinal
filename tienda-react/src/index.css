@@ -5,16 +5,18 @@
   --color-fondo-tarjeta: #eff6ff;
   --color-borde-tarjeta: #bfdbfe;
   --color-acento: #2563eb;
+  --color-fondo-hover: #dbeafe;
 }
 
 /* Proyecto Final: estilos y efecto hover de las tarjetas */
 .tarjeta-producto {
   background-color: var(--color-fondo-tarjeta);
   border-color: var(--color-borde-tarjeta);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;;
 }
-
+/* Proyecto Final: cambio de color y elevación al pasar el cursor */
 .tarjeta-producto:hover {
   transform: translateY(-4px);
   border-color: var(--color-acento);
+  background-color: var(--color-fondo-hover);
 }
