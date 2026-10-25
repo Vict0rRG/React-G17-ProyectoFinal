@@ -13,12 +13,17 @@ export default function App() {
   // Proyecto Final: agregar un producto creando un nuevo arreglo
   function agregarAlCarrito(producto: Producto) {
   setCarrito((anterior) => [...anterior, producto]);
-}
+  }
+  // Proyecto Final: calcular el subtotal sumando los precios del carrito
+  const subtotal = carrito.reduce((total, producto) => total + producto.precio,0
+  );
+
   return (
     <main className="mx-auto max-w-5xl p-6">
       {/* Proyecto Final: Una sola cabecera para la tienda*/}
       {/* Proyecto Final: enviar al encabezado la cantidad de productos del carrito */}
-      <Header nombre="TecCart" eslogan="Una Vida Tecnologica" cantidadCarrito={carrito.length}/>
+      {/* Proyecto Final: enviar al encabezado la cantidad y el subtotal */}
+      <Header nombre="TecCart" eslogan="Una Vida Tecnologica" cantidadCarrito={carrito.length} subtotal={subtotal}/>
       {/* Proyecto Final: título para identificar la sección del catálogo */}
       <h2 className="mb-4 mt-6 text-xl font-semibold">
         Productos destacados
