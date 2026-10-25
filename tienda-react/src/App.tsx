@@ -3,14 +3,22 @@ import Header from "./components/Header"
 import ProductCard from "./components/ProductCard"
 import { productos } from "./datos"
 import Beneficio from "./components/Beneficio"
-
+import { useState } from "react";
+import type { Producto } from "./tipos";
 
 
 export default function App() {
+  // Proyecto Final: guardar los productos agregados al carrito
+  const [carrito, setCarrito] = useState<Producto[]>([]);
+  // Proyecto Final: agregar un producto creando un nuevo arreglo
+  function agregarAlCarrito(producto: Producto) {
+  setCarrito((anterior) => [...anterior, producto]);
+}
   return (
     <main className="mx-auto max-w-5xl p-6">
       {/* Proyecto Final: Una sola cabecera para la tienda*/}
-      <Header nombre="TecCart" eslogan="Una Vida Tecnologica"/>
+      {/* Proyecto Final: enviar al encabezado la cantidad de productos del carrito */}
+      <Header nombre="TecCart" eslogan="Una Vida Tecnologica" cantidadCarrito={carrito.length}/>
       {/* Proyecto Final: título para identificar la sección del catálogo */}
       <h2 className="mb-4 mt-6 text-xl font-semibold">
         Productos destacados
@@ -19,7 +27,7 @@ export default function App() {
       {/* Proyecto Final: distribución responsive con CSS Grid - Agregue un atributo className a la etiqueta <section> */}
       <section className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {
-          productos.map((p) => <ProductCard producto={p} key={p.id}/>)
+          productos.map((p) => (<ProductCard producto={p} key={p.id} onAgregar={() => agregarAlCarrito(p)}/>))
         }
       </section>
       {/* Proyecto Final: título para identificar la sección de beneficios */}

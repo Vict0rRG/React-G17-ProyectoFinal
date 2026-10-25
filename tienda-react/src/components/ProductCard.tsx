@@ -4,9 +4,12 @@ import Precio from "./Precio";
 
 interface Props {
   producto : Producto;
+  // Proyecto Final: función para agregar un producto al carrito
+  onAgregar?: () => void;
 }
 
-export default function ProductCard({ producto } : Props) {
+//export default function ProductCard({ producto } : Props) {
+export default function ProductCard({ producto, onAgregar }: Props) {
   // Proyecto Final: cambie w-64 por w-full para adaptar la tarjeta al Grid
   return (
     <article className="tarjeta-producto w-full rounded-xl border p-4">
@@ -18,6 +21,11 @@ export default function ProductCard({ producto } : Props) {
         }</p>
         {/* Proyecto Final: reutilizamos el componente Precio mediante props */}
         <Precio precio={producto.precio} />
-    </article>
+        {/* Proyecto Final: botón para agregar productos disponibles al carrito */}
+        <button type="button" onClick={onAgregar} disabled={producto.stock === 0}
+        className="mt-4 w-full rounded-lg bg-blue-600 p-2 text-white hover:bg-blue-700 disabled:bg-gray-400">
+          {producto.stock === 0 ? "Agotado" : "Agregar al carrito"}
+        </button>
+      </article>
   )
 }
