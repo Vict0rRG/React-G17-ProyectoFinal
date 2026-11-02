@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 import type { Producto } from "./tipos";
 import { productos } from "./datos";
 import { obtenerCatalogo } from "./api";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+// Proyecto Final: Acceder al carrito compartido
+import useCarrito from "./hooks/useCarrito";
 import ProductCard from "./components/ProductCard";
 import Beneficio from "./components/Beneficio";
 
 export default function App() {
-  // Proyecto Final: Guardar los productos agregados al carrito
-  const [carrito, setCarrito] = useState<Producto[]>([]);
+
+  // Proyecto Final: Agregar productos mediante el carrito compartido.
+  const { agregarAlCarrito } = useCarrito();
 
   // Proyecto Final: Guardar la categoría seleccionada por el usuario.
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Todos");
@@ -55,14 +56,6 @@ export default function App() {
     return () => controlador.abort();
   }, [intentos]);
 
-  // Proyecto Final: Agregar un producto creando un nuevo arreglo
-  function agregarAlCarrito(producto: Producto) {
-    setCarrito((anterior) => [...anterior, producto]);
-  }
-
-  // Proyecto Final: Calcular el subtotal sumando los precios del carrito
-  const subtotal = carrito.reduce((total, producto) => total + producto.precio, 0);
-
   // Proyecto Final: Filtrar los productos del catálogo actual
   const productosFiltrados = categoriaSeleccionada === "Todos"
     ? catalogo
@@ -70,13 +63,6 @@ export default function App() {
 
   return (
     <main className="mx-auto max-w-5xl p-6">
-      {/* Proyecto Final: Una sola cabecera para la tienda */}
-      <Header
-        nombre="TecCart"
-        eslogan="Una Vida Tecnologica"
-        cantidadCarrito={carrito.length}
-        subtotal={subtotal}
-      />
 
       {/* Proyecto Final: Titulo para identificar la sección del catálogo */}
       <h2 className="mb-4 mt-6 text-xl font-semibold">
@@ -180,8 +166,6 @@ export default function App() {
         <Beneficio titulo="Cuotas" detalle="Opciones de pago para tus compras" />
         <Beneficio titulo="Garantía" />
       </section>
-
-      <Footer />
     </main>
   );
 }
